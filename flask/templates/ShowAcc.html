@@ -1,0 +1,53 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/modify';">Modify</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/del';">Delete</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+</div>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+	<body>
+	<div id="tblCustomers">
+		<table border='1'>
+			<tr>
+			<th>id</th>
+			<th>author</th>
+			</tr>
+			{% for colour in list %}
+			<tr>
+			<td>{{colour['id']}}</td>
+			<td>{{colour['author']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	</body>
+	
+	<input type="button" id="btnExport" value="Export" onclick="Export()" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+      <script type="text/javascript">
+         function Export() {
+             html2canvas(document.getElementById('tblCustomers'), {
+                 onrendered: function (canvas) {
+                     var data = canvas.toDataURL();
+                     var docDefinition = {
+                         content: [{
+                             image: data,
+                             width: 1096
+                         }]
+                     };
+                     pdfMake.createPdf(docDefinition).download("Table.pdf");
+                 }
+             });
+         }
+      </script>
+	  
+</html>

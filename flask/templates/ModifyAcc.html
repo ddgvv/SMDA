@@ -1,0 +1,30 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/modify';">Modify</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/del';">Delete</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+</div>
+<br>	 <br>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+<body>
+	<form action="/getAcc" method="POST">
+		<select name= list method="POST"	 >
+			{% for colour in list %}
+			<option value= "{{loop.index0}}" >{{colour['author']}}</option>"
+			{% endfor %}
+		</select>
+	 <input type="submit" value="Submit">
+<br>	 <br>
+	 <form action="/updateAcc" method="POST">
+		  Name: <input type="text" name="name" value="{{res['id']}}"><br>
+		  Account Type: <input type="text" name="accType" value="{{res['author']}}"><br>
+		  <input type="submit" value="Submit">
+	</form>
+	 
+</body>
+</html>

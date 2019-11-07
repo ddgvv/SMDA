@@ -1,0 +1,22 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/modify';">Modify</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/del';">Delete</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+</div>
+<p name= colours method="POST" action="/">
+{{colours}}
+</p>
+
+<form action="/insertAcc" method="POST">
+  Name: <input type="text" name="name"><br>
+  Account Type: 
+  <select name="accType" method="POST" >
+    {% for type in accType %}
+    <option value= "{{type[0]}}" SELECTED>{{type[1]}}</option>"
+    {% endfor %}
+</select><br>
+
+  <input type="submit" value="Submit">
+</form>

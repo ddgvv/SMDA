@@ -1,0 +1,38 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/modify';">Modify</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/del';">Delete</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+</div>
+<br>	 <br>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+<body>
+<form action="/updateAcc" method="POST" >
+		  ID:{{res[0]}}<input type="text" name="id" value="{{res[0]}}" hidden><br>
+		  Name: <input type="text" name="name" value="{{res[1]}}"><br>
+		  Account Type: 
+			  <select name="accType" method="POST" >
+				{% for type in accType %}
+				<option value= "{{type[0]}}" {% if type[0]==res[2] %}selected="selected"{% endif %}>{{type[1]}}</option>"
+				{% endfor %}
+			</select><br>
+		  <input type="submit" value="Update">
+	</form>
+	
+	<form action="/getAcc" method="POST">
+		<select name= "acc" method="POST"	 >
+			{% for acc in list %}
+			<option value= "{{acc[0]}}" {% if res[0]==acc[0] %}selected="selected"{% endif %}>{{acc[1]}}</option>
+			{% endfor %}
+		</select>
+	 <input type="submit" value="Submit">
+<br>	 <br>
+	 
+	 
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/entry';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/entry/show';">Show</button>
+  <button class="tablinks" onclick="window.location.href = '/';">Home</button>
+</div>
+<br>	 <br>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+<body>
+<form action="/entry/update" method="POST" >
+	
+	ID:{{res[0]}}<input type="text" name="id" value="{{res[0]}}" hidden ><br>
+
+	Description: <input type="text" name="desc" value="{{res[5]}}" required><br>
+
+	From Account: 
+		<select name="from" method="POST" >
+		{% for acc in fromAcc %}
+		<option value= "{{acc[0]}}" {% if acc[0]==res[1] %}selected="selected"{% endif %}>{{acc[1]}}</option>"
+		{% endfor %}
+		</select><br>
+
+	To Account: 
+		<select name="to" method="POST" >
+		{% for acc in toAcc %}
+		<option value= "{{acc[0]}}"  {% if acc[0]==res[2] %}selected="selected"{% endif %}>{{acc[1]}}</option>"
+		{% endfor %}
+		</select><br>
+
+	Amount:<input type="number" name="amt" value="{{res[3]}}" required><br>
+
+	Date:<input type="date" name="eDate" value="{{res[4]}}" required><br>
+
+	<input type="submit" value="Update">
+
+	</form>
+	
+</body>
+</html>

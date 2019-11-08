@@ -1,0 +1,29 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/entry';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/entry/show';">Show</button>
+  <button class="tablinks" onclick="window.location.href = '/';">Home</button>
+</div>
+<p name= colours method="POST" action="/">
+{{colours}}
+</p>
+
+<form action="/insertEntry" method="POST">
+  Description: <input type="text" name="desc" value="-" required><br>
+  From Account: 
+  <select name="from" method="POST" >
+    {% for acc in fromAcc %}
+    <option value= "{{acc[0]}}" >{{acc[1]}}</option>"
+    {% endfor %}
+</select><br>
+	To Account: 
+  <select name="to" method="POST" >
+    {% for acc in toAcc %}
+    <option value= "{{acc[0]}}" >{{acc[1]}}</option>"
+    {% endfor %}
+</select><br>
+Amount:<input type="number" name="amt" required><br>
+Date:<input type="date" name="eDate" required><br>
+
+  <input type="submit" value="Submit">
+</form>

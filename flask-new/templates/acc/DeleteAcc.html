@@ -1,0 +1,23 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+  <button class="tablinks" onclick="window.location.href = '/';">Home</button>
+</div>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+<body>
+	<form action="/delAcc" method="POST">
+		<select name= "acc" method="POST"	 >
+			{% for acc in list %}
+			<option value= "{{acc[0]}}" >{{acc[1]}}</option>"
+			{% endfor %}
+		</select>
+	 <input type="submit" value="Submit">
+</body>
+</html>

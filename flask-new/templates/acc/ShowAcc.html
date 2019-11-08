@@ -1,0 +1,60 @@
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="window.location.href = '/acc/create';">Create</button>
+  <button class="tablinks" onclick="window.location.href = '/acc/show';">Show</button>
+  <button class="tablinks" onclick="window.location.href = '/';">Home</button>
+</div>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMDA</title>
+</head>
+	<body>
+	<div id="tblCustomers" border='1'>
+	<form action="/delAcc" method="POST" >
+		<input type="submit" value="delete" name="btn">
+		<input type="submit" value="Update" name="btn">
+		<table border='1'>
+			<tr>
+			<th>id</th>
+			<th>Accounts</th>
+			<th>Accounts Type</th>
+			<th> </th>
+			</tr>
+			{% for colour in list %}
+			<tr>
+			<td>{{colour[0]}}</td>
+			<td>{{colour[1]}}</td>
+			<td>{{colour[2]}}</td>
+			<td><input type="radio" name="input" value="{{colour[0]}}" checked><br></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+	</div>
+	</body>
+	
+	<input type="button" id="btnExport" value="Export" onclick="Export()" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+      <script type="text/javascript">
+         function Export() {
+             html2canvas(document.getElementById('tblCustomers'), {
+                 onrendered: function (canvas) {
+                     var data = canvas.toDataURL();
+                     var docDefinition = {
+                         content: [{
+                             image: data,
+                             width: 1096
+                         }]
+                     };
+                     pdfMake.createPdf(docDefinition).download("Table.pdf");
+                 }
+             });
+         }
+      </script>
+	  
+</html>

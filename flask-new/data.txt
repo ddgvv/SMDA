@@ -1,0 +1,28 @@
+{
+"query": [{
+			"create": "CREATE TABLE ACC_TYPE (ACC_TYPE_ID INTEGER PRIMARY KEY , ACC_TYPE_NAME TEXT NOT NULL);", 
+			"insert": "INSERT INTO ACC_TYPE (ACC_TYPE_ID,ACC_TYPE_NAME)VALUES (?,?)", 
+			"delete": "delete from ACC_TYPE where ACC_TYPE_ID= ? ;",
+			"update": "UPDATE ACC_TYPE set ACC_TYPE_NAME = ? where ACC_TYPE_ID = ? ",
+			"show":"select * from ACC_TYPE;"
+			}, {
+			"create": "CREATE TABLE ACCOUNT (ACCOUNT_ID INTEGER  PRIMARY KEY AUTOINCREMENT , ACCOUNT_NAME TEXT NOT NULL,ACC_TYPE_ID INT);", 
+			"insert": "INSERT INTO ACCOUNT (ACCOUNT_NAME,ACC_TYPE_ID)VALUES (?,?)", 
+			"delete": "delete from ACCOUNT where ACCOUNT_ID= ? ;",
+			"update": "UPDATE ACCOUNT set ACCOUNT_NAME = ? ,ACC_TYPE_ID= ? where ACCOUNT_ID = ? ",
+			"show1"	: "select * from ACCOUNT;",
+			"showQuery"	: "select * from ACCOUNT where ACCOUNT_ID = ? ;",
+			"show"	: "SELECT A.ACCOUNT_ID, A.ACCOUNT_NAME, AT.ACC_TYPE_NAME FROM ACCOUNT A INNER JOIN ACC_TYPE AT ON A.ACC_TYPE_ID = AT.ACC_TYPE_ID;",
+			"from"	: "select * from ACCOUNT where ACC_TYPE_ID not in (1) ;",
+			"to"	: "select * from ACCOUNT where ACC_TYPE_ID not in (2) ;"
+			}, {
+			"create": "CREATE TABLE ENTRY_TR (ENTRY_TR_ID INTEGER  PRIMARY KEY AUTOINCREMENT , ACCOUNT_FROM_ID INTEGER NOT NULL,ACCOUNT_TO_ID INTEGER NOT NULL,AMOUNT INTEGER NOT NULL,TDATE DATE ,DESC TEXT );", 
+			"insert": "INSERT INTO ENTRY_TR (ACCOUNT_FROM_ID,ACCOUNT_TO_ID,AMOUNT,TDATE,DESC)VALUES (?,?,?,?,?)", 
+			"delete": "delete from ENTRY_TR where ENTRY_TR_ID= ? ;",
+			"update": "UPDATE ENTRY_TR set ACCOUNT_FROM_ID = ? ,ACCOUNT_TO_ID= ? ,AMOUNT= ? ,TDATE= ? ,DESC= ? where ENTRY_TR_ID = ? ",
+			"show1"	: "select * from ENTRY_TR;",
+			"showWhere":"select * from ENTRY_TR where ENTRY_TR_ID= ?  ;",
+			"show"	: "SELECT E.ENTRY_TR_ID, A.ACCOUNT_NAME, B.ACCOUNT_NAME, E.AMOUNT, E.TDATE, E.DESC  FROM ENTRY_TR E INNER JOIN ACCOUNT A ON E.ACCOUNT_FROM_ID=A.ACCOUNT_ID INNER JOIN ACCOUNT B ON E.ACCOUNT_TO_ID=B.ACCOUNT_ID;"
+			}]}
+			
+			

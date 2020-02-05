@@ -19,6 +19,18 @@ window.addEventListener('scroll', function() {
     document.querySelector('#navbar').style.opacity = 1;
   }
 });
+var i=0;
+
+function myFunction() {
+	i=i+1;
+	if(i==5) window.location.replace("http://smda.org.in/contact.html");
+}
+
+function redirect()
+    {
+    var url = "http://smda.org.in/";
+    window.location(url);
+    }
 
 
 // Smooth Scrolling
